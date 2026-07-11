@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7e5700;
+  --color-primary-fixed: #ffdeac;
+  --color-primary-fixed-dim: #ffba38;
+  --color-primary-container: #ffb300;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #6b4900;
+  
+  --color-secondary: #3f6653;
+  --color-secondary-fixed: #c1ecd4;
+  --color-secondary-fixed-dim: #a5d0b9;
+  --color-secondary-container: #beead1;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #436b58;
+
+  --color-tertiary: #2c694e;
+  --color-tertiary-container: #90cfae;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #1a5a40;
+  
+  --color-background: #fdf9ee;
+  --color-on-background: #1c1c15;
+  
+  --color-surface: #fdf9ee;
+  --color-on-surface: #1c1c15;
+  --color-on-surface-variant: #514532;
+  
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f7f3e8;
+  --color-surface-container: #f1eee3;
+  --color-surface-container-high: #ece8dd;
+  --color-surface-container-highest: #e6e2d8;
+
+  --color-outline: #847560;
+  --color-outline-variant: #d6c4ac;
+  
+  --font-sans: "Work Sans", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  
+  --spacing-section-gap: 120px;
+  --spacing-margin-desktop: 64px;
+  --spacing-margin-mobile: 20px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-family: var(--font-sans);
+    margin: 0;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.text-shadow-organic {
+  text-shadow: 0 4px 16px rgba(27, 67, 50, 0.08);
+}
+
+.box-shadow-organic-sm {
+  box-shadow: 0 8px 24px rgba(27, 67, 50, 0.05);
+}
+
+.box-shadow-organic-md {
+  box-shadow: 0 16px 32px rgba(27, 67, 50, 0.08);
+}
+
+.drop-shadow-leaf {
+  filter: drop-shadow(0 12px 24px rgba(27, 67, 50, 0.15));
+}
