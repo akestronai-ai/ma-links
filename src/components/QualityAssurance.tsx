@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react"
+import qualityAssuranceImg from "@/assets/images/quality_assurance.png"
 
 export default function QualityAssurance() {
   const points = [
@@ -61,7 +62,7 @@ export default function QualityAssurance() {
             <img
               alt="Quality Assurance Packing"
               className="w-full h-full object-cover transform scale-101 hover:scale-103 transition-transform duration-700 ease-out"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHONPoPB1rrp3X_etUlK7WXIb8PTyH7oKdxlso9lUDt_v0J1hPQemnFWKoVRrZSwFulUUsm19uObtUapGo1Svf2guSGWWAeE7kikFzyqvAtsEK2723gKKjVxz_B1KN9B1l3JF-gNmJmFi9O6EQC8Qvf_-Ifj6iU9TqeDltXwCwt1KVxSnOtHQqZFhhNN44COkmD3TC5SIrJDUmo3X5h6ampUNW5SaTsKe7YvpJDNhHgtsbNWrU3JO9oDvTUNDkHFbiVH6wNbM5vkQ"
+              src={qualityAssuranceImg}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
           </div>

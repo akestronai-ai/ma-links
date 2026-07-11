@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Menu, X, Globe } from "lucide-react"
+import logo from "@/assets/images/logo.png"
 
 interface NavbarProps {
   onOpenQuote: () => void
@@ -44,7 +45,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             <img
               alt="MA Links Logo"
               className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzHL2n3kRaDvUfLcLzf1uLsqGFRcRwUZ7oJeSlVzr_S87b9F7rC7-eieGh0txtFNdUkxvl3ZiHqwXBPWRIG0fdlFhFkxgLrucdAkPhIvaJECKE0gof9wu3ULSo6SRLprK7TXBbDEp_D7Wkag5xIZh96JciC_eHJwfMQZvYLrgG0-YZrTEFm7nCeLqmpOb6f7SG4blP5mV2YV_3dN5TZpAQ9FwMG3xsy26x1RAdZD5D9iquo_TJT20IvkN6AaM8PDPWlMAu71Wx--s"
+              src={logo}
             />
             <span className="text-xl md:text-2xl font-display font-bold text-primary tracking-tight">
               MA Links

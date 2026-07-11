@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react"
+import footerAccentImg from "@/assets/images/footer_accent.png"
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
       <div
         className="absolute right-0 top-0 w-96 h-96 opacity-5 pointer-events-none transform -rotate-12 translate-x-20 -translate-y-20 bg-contain bg-no-repeat"
         style={{
-          backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuCF1IWYkLuzo2MasgbhjbudWd8YmBHChOPNC9SajhdLoRKJJKOXxumll7uhwf5LpMv2nHnUJsK39Kb3ORydvp0JZ8os4KOGQcwMOEUkjXMkYKihVswRVRspaw8vOuQtIIixsef5L3_G-5sn4PGXOiUGQS-EnEwkXAGb3oiH-TUyHNG9XvIOhd8Wn3N5bBI1PFPuEW_oCgHWYN_3mLfj_-YtUV-nbBkDiQ2P8Fj_sj9x-2d3bdJBHhL0F9lO6UBexZla-egCzmHD560')`,
+          backgroundImage: `url('${footerAccentImg}')`,
         }}
         title="Abstract translucent overlay of tropical palm and mango leaves in deep green tones."
       />

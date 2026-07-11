@@ -1,4 +1,6 @@
 import { ArrowRight } from "lucide-react"
+import mangoSkin from "@/assets/images/mango_skin.png"
+import heroCrate from "@/assets/images/hero_crate.png"
 
 interface HeroProps {
   onOpenQuote: () => void
@@ -14,7 +16,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
       <div 
         className="absolute bottom-0 right-0 w-80 h-80 opacity-10 pointer-events-none transform rotate-45 drop-shadow-leaf bg-contain bg-no-repeat"
         style={{
-          backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxkvR8aa0lgRq8rH3eaSRHxosRALWTuET04RQ85eb22RobHyw8QZ2dcghub-MY6t1ZF3PZMsQ_uF8WQ4hHI5Lg9hVhyAcT1zbbOs0_kAE9Z4vvnmYE3Pt3-3uOoZp7BUbgkY-zEckWi0ESOWNraZYirwxuNIU9x7q9n73dxCp8jJed--8JGZP107Jm0ClIzH35j0tpA9piVw8SEmfTwfGWnLmW-IqEAHC2ra9ggvTVJEJkJ06bHj4tEbQs9iv9xNTCOVimJqHyeeA')`
+          backgroundImage: `url('${mangoSkin}')`
         }}
         title="Detailed close up of a golden chaunsa mango skin texture, organic curves, sun-drenched lighting, premium fruit export context."
       />
@@ -55,7 +57,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             <img 
               alt="Premium Multan Mangoes in Crate" 
               className="w-full h-full object-cover transform hover:scale-103 duration-700 ease-out" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuALkQZ086XyUSDjrImJbsgY8jPUKKk8zf1Z0lOORxB71kB0o2xw_0mGD_p7SzITeTeHLmI7HiWSWP9JIW1s1p50Jrf-DI7Zli1skpKK1SX2epNjNVdeG3HhcGM86BLNKm1pzQnosqNkgxeUCScbvCkPF3hm5afrDWLYTWbav1YFZju0LaTRUGnQhmaL-xHPUDVeUJfurjXd_1uJrTY3uXXLcGWZwKp6q2WRfH_oSy2ZwAqCxPmKsR1mMn9r6HQ4iyVYjzrFasV7uzs"
+              src={heroCrate}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
           </div>

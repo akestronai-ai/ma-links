@@ -1,4 +1,5 @@
 import { Droplet, Flower2 } from "lucide-react"
+import perfectRipenessImg from "@/assets/images/perfect_ripeness.png"
 
 export default function PerfectRipeness() {
   return (
@@ -11,7 +12,7 @@ export default function PerfectRipeness() {
             <img
               alt="Perfect Ripe Sliced Mango"
               className="w-full h-full object-cover transform scale-101 hover:scale-103 transition-transform duration-700 ease-out"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFzeaZexstBlZ2ZlRK5KSR6rWCkM7nly6C7daKIoQ76_HrklLaN4tQCgzL0XR3-XI42VtE8nF8VmCVVVwaQbZcPTGhRZhUhVUcM0GGWoBgF7NoX5BMZTlPSKVb3IE9gqGHVxYFUPI2n92ue9LXO0ZxmQjVs1ZhPVn1zVawjicleVsg4Uh72ELVbvMk1noBmy0ZJ365Q0fzOcj_0UIb6oJEtEJmZFOblItg4W27AI-9g30tkxl24rUSh8NlCIYUIP9QRdAcKthw6II"
+              src={perfectRipenessImg}
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-secondary/10 via-transparent to-transparent pointer-events-none" />
           </div>

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { TreePine, ShieldCheck, Thermometer, Box, Truck, Check } from "lucide-react"
+import orchardExportImg from "@/assets/images/orchard_export.png"
 
 export default function OrchardExport() {
   const [activeStep, setActiveStep] = useState(0)
@@ -49,7 +50,7 @@ export default function OrchardExport() {
         <img
           alt="From Orchard to Export Timeline"
           className="w-full h-full object-cover transform scale-101 hover:scale-103 duration-[1.5s] ease-out"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHbTF-bWMo9mXIB_tB2jlD-pvef4hQG9dmJTzNWe0OPkGN3pXgKeR55TwUoc5Gff9qTfOAFEE_bMY5ve-xlUgnVZ5MZ2xKaB2P5IrEdJJIBom47aEmZkPxtiM301hJuS2w96UOygANn73kMlPPMpZp_wFfQDOUCzT7Kgs88Wmh_nmfbTl903AoY7vus-woIckx6KcgR5W3ysHnzNYYuV8HvVNH1ZwM7iOFG9E4FaY2dzx_FiKsIubi3kMO_owwiwmbg9pIqF8Db-U"
+          src={orchardExportImg}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent pointer-events-none" />
         <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white max-w-lg z-10 flex flex-col gap-2">

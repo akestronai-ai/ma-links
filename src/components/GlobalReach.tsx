@@ -1,4 +1,5 @@
 import { Navigation, Globe2, Award, Zap } from "lucide-react"
+import globalReachImg from "@/assets/images/global_reach.png"
 
 export default function GlobalReach() {
   const stats = [
@@ -41,7 +42,7 @@ export default function GlobalReach() {
         <img
           alt="Global Logistics Map"
           className="w-full h-full object-cover transform scale-101 hover:scale-103 transition-all duration-[2s] ease-out"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEgifo-_iCodM77oixnXipxNiwOMF-TO-dpHjHRQ3JUSQaoFWyHZYvn4GJjtNMO7htOffZfEALcAQ6VbdvhZxPeBa15KxWnGyNtsqNnvEJWDrLWfXhS73kwj8FfGSqy9XUSfHiYb529luj7-a70W2urjo_8ke0reTti4-SSBPYKqrhOtaqs2K1UjciPVxxgcPLGnK_43GelKUaOrvn6HzeQ-hQookdS_DCtKSpH7ILbUbd9UIZnHShyQfp5p67AncmyLTV_RIMMK8"
+          src={globalReachImg}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
       </div>
