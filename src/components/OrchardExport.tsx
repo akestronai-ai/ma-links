@@ -1,16 +1,11 @@
 import { useState } from "react"
-import { TreePine, ShieldCheck, Thermometer, Box, Truck, Check } from "lucide-react"
+import { ShieldCheck, Thermometer, Box, Truck, Check } from "lucide-react"
 import orchardExportImg from "@/assets/images/orchard_export.png"
 
 export default function OrchardExport() {
   const [activeStep, setActiveStep] = useState(0)
 
   const steps = [
-    {
-      title: "Orchard Harvest",
-      desc: "Handpicked by generational farmers in Multan at optimal maturity to guarantee perfect sugar development.",
-      icon: <TreePine className="w-5 h-5" />,
-    },
     {
       title: "Quality Sorting",
       desc: "Strict manual and sensory inspection where mangoes are sorted by size, color, aroma, and skin texture.",
