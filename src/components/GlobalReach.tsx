@@ -26,7 +26,7 @@ export default function GlobalReach() {
   ]
 
   return (
-    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20">
+    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
       <div className="text-center mb-12">
         <h2 className="font-display font-bold text-3xl md:text-4xl text-on-surface inline-block relative">
           Global Reach
@@ -48,7 +48,7 @@ export default function GlobalReach() {
       </div>
 
       {/* Stats Board */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6 md:mt-12">
         {stats.map((stat) => (
           <div
             key={stat.label}

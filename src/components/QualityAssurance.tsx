@@ -18,7 +18,7 @@ export default function QualityAssurance() {
   ]
 
   return (
-    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16">
+    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
         {/* Left Column - Details */}

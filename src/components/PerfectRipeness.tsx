@@ -3,7 +3,7 @@ import perfectRipenessImg from "@/assets/images/perfect_ripeness.png"
 
 export default function PerfectRipeness() {
   return (
-    <section className="bg-surface-container-low py-20 mt-8">
+    <section className="bg-surface-container-low py-12 md:py-20 mt-4 md:mt-8">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           

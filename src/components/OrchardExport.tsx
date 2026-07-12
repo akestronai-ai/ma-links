@@ -34,7 +34,7 @@ export default function OrchardExport() {
   ]
 
   return (
-    <section id="certifications" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 scroll-mt-24">
+    <section id="certifications" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 scroll-mt-24">
       <div className="text-center mb-12">
         <h2 className="font-display font-bold text-3xl md:text-4xl text-on-surface inline-block relative">
           From Orchard to Export
@@ -101,7 +101,7 @@ export default function OrchardExport() {
           </div>
 
           {/* Step Detail Display Card */}
-          <div className="lg:col-span-7 bg-background border border-outline-variant/10 rounded-[1.5rem] p-6 md:p-8 box-shadow-organic-sm relative min-h-[220px] flex flex-col justify-center animate-in fade-in duration-300">
+          <div className="lg:col-span-7 bg-background border border-outline-variant/10 rounded-[1.5rem] p-4 md:p-8 box-shadow-organic-sm relative min-h-[220px] flex flex-col justify-center animate-in fade-in duration-300">
             <div className="absolute top-6 right-6 text-primary-fixed-dim/40 text-7xl font-display font-extrabold select-none">
               0{activeStep + 1}
             </div>

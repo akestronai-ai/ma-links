@@ -61,7 +61,7 @@ export default function MangoVarieties() {
   ]
 
   return (
-    <section id="varieties" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap scroll-mt-24">
+    <section id="varieties" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-section-gap scroll-mt-24">
       <div className="text-center mb-16">
         <h2 className="font-display font-bold text-3xl md:text-4xl text-on-surface inline-block relative">
           Our Premium Mango Varieties

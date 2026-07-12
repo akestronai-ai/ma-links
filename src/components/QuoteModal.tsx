@@ -55,7 +55,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant hover:text-on-surface"
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant hover:text-on-surface z-30"
         >
           <X className="w-5 h-5" />
         </button>

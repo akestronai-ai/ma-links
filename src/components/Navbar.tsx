@@ -66,7 +66,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             
             {/* Language Selector */}
             <div className="relative">
@@ -76,7 +76,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
                 aria-label="Language Selector"
               >
                 <Globe className="w-5 h-5" />
-                <span className="text-xs font-semibold">{currentLang}</span>
+                <span className="text-xs font-semibold hidden md:inline">{currentLang}</span>
               </button>
               {showLangDropdown && (
                 <div className="absolute right-0 mt-2 bg-background border border-outline-variant/30 rounded-xl shadow-lg p-2 flex flex-col gap-1 w-24 animate-in fade-in slide-in-from-top-1 duration-150 z-55">
@@ -103,7 +103,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
             {/* Quote CTA Button */}
             <button
               onClick={onOpenQuote}
-              className="bg-primary-container text-on-primary-container font-sans font-semibold text-sm px-6 py-2.5 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 box-shadow-organic-sm hover:box-shadow-organic-md border-b-2 border-[#e6a100] active:scale-95 whitespace-nowrap cursor-pointer"
+              className="bg-primary-container text-on-primary-container font-sans font-semibold text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 box-shadow-organic-sm hover:box-shadow-organic-md border-b-2 border-[#e6a100] active:scale-95 whitespace-nowrap cursor-pointer"
             >
               Get a Quote
             </button>

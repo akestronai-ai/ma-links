@@ -3,7 +3,7 @@ import footerAccentImg from "@/assets/images/footer_accent.png"
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-secondary dark:bg-on-secondary-fixed w-full rounded-t-[100px] md:rounded-t-[120px] mt-section-gap shadow-2xl relative overflow-hidden text-white/90">
+    <footer id="contact" className="bg-secondary dark:bg-on-secondary-fixed w-full rounded-t-[40px] md:rounded-t-[120px] mt-12 md:mt-section-gap shadow-2xl relative overflow-hidden text-white/90">
       
       {/* Organic background accent for footer */}
       <div
@@ -14,7 +14,7 @@ export default function Footer() {
         title="Abstract translucent overlay of tropical palm and mango leaves in deep green tones."
       />
 
-      <div className="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-24 pb-12 gap-gutter relative z-10">
+      <div className="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 pb-8 md:pt-24 md:pb-12 gap-gutter relative z-10">
         
         {/* Brand column */}
         <div className="flex flex-col gap-6 max-w-sm">
