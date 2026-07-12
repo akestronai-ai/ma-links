@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Menu, X, Globe } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import logo from "@/assets/images/logo.png"
 
 interface NavbarProps {
@@ -9,8 +9,7 @@ interface NavbarProps {
 export default function Navbar({ onOpenQuote }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [currentLang, setCurrentLang] = useState("EN")
-  const [showLangDropdown, setShowLangDropdown] = useState(false)
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,37 +67,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
           {/* Actions */}
           <div className="flex items-center gap-2 md:gap-4">
             
-            {/* Language Selector */}
-            <div className="relative">
-              <button
-                onClick={() => setShowLangDropdown(!showLangDropdown)}
-                className="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 p-2 rounded-full hover:bg-surface-container-low/50 duration-150"
-                aria-label="Language Selector"
-              >
-                <Globe className="w-5 h-5" />
-                <span className="text-xs font-semibold hidden md:inline">{currentLang}</span>
-              </button>
-              {showLangDropdown && (
-                <div className="absolute right-0 mt-2 bg-background border border-outline-variant/30 rounded-xl shadow-lg p-2 flex flex-col gap-1 w-24 animate-in fade-in slide-in-from-top-1 duration-150 z-55">
-                  {["EN", "UR", "AR"].map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => {
-                        setCurrentLang(lang)
-                        setShowLangDropdown(false)
-                      }}
-                      className={`text-left text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors ${
-                        currentLang === lang
-                          ? "bg-primary/10 text-primary"
-                          : "text-on-surface-variant hover:bg-surface-container-low"
-                      }`}
-                    >
-                      {lang === "EN" ? "English" : lang === "UR" ? "اردو" : "العربية"}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+
 
             {/* Quote CTA Button */}
             <button

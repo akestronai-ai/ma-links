@@ -48,7 +48,7 @@ export default function GlobalReach() {
       </div>
 
       {/* Stats Board */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6 md:mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6 md:mt-12">
         {stats.map((stat) => (
           <div
             key={stat.label}
