@@ -1,0 +1,80 @@
+{
+  "title": "MA Links Q4 Export Diversification Plan",
+  "pitch": "Off-season product pitch: Fruits, Dry Fruits & Vegetables for Oct–Dec export window",
+  "overview": "MA Links currently exports mangoes, which peak in the summer season. The diversification products maintain year-round buyer relationships through the last quarter of the year (October–December).",
+  "priorityOrder": [
+    {
+      "rank": 1,
+      "product": "Kinnow (Citrus)",
+      "reason": "Highest production (2.2–2.7M tonnes/yr), strongest export growth ($110M season target), near-perfect seasonal complement to mango."
+    },
+    {
+      "rank": 2,
+      "product": "Walnuts (Akhrot)",
+      "reason": "Best-timed dry fruit for the Q4 export window with strong winter demand."
+    },
+    {
+      "rank": 3,
+      "product": "Onion",
+      "reason": "Largest volume opportunity among vegetables with recent export surge (~$210M)."
+    }
+  ],
+  "categories": {
+    "fruits": [
+      {
+        "product": "Kinnow (Citrus)",
+        "window": "Dec – Mar (harvest starts Dec)",
+        "whyItFits": "Top pick. Production 2.2–2.7M tonnes/year. 2025 exports ~$58M; current season target $110M. Directly complements mango's summer season."
+      },
+      {
+        "product": "Guava",
+        "window": "Aug – Dec (winter peak)",
+        "whyItFits": "Good domestic volume; growing export presence in winter months."
+      },
+      {
+        "product": "Pomegranate",
+        "window": "Aug – Nov, extends into Dec",
+        "whyItFits": "Solid production; export demand continues into early winter."
+      },
+      {
+        "product": "Fresh Dates",
+        "window": "Sept – Nov",
+        "whyItFits": "Pakistan is a top-5 global date producer; niche but steady demand."
+      }
+    ],
+    "dryFruits": [
+      {
+        "product": "Walnuts (Akhrot)",
+        "window": "Oct – Dec (peak harvest)",
+        "whyItFits": "Best dry-fruit fit for Q4 quarter. Strong winter international demand."
+      },
+      {
+        "product": "Pine Nuts (Chilgoza)",
+        "window": "Aug – Oct, sold through winter",
+        "whyItFits": "High-value niche product; premium pricing in winter months."
+      },
+      {
+        "product": "Dried Figs (Anjeer)",
+        "window": "Late autumn",
+        "whyItFits": "Enters market in this window; steady winter demand."
+      },
+      {
+        "product": "Dried Dates / Chuhara",
+        "window": "Year-round, demand peaks in winter",
+        "whyItFits": "Reliable volume; can be bundled with fresh date shipments."
+      }
+    ],
+    "vegetables": [
+      {
+        "product": "Onion",
+        "window": "Oct – Dec (autumn crop)",
+        "whyItFits": "Recent export surge reported (~$210M), largest volume opportunity among vegetables."
+      },
+      {
+        "product": "Potato",
+        "window": "Oct – Dec (autumn crop)",
+        "whyItFits": "Reliable volume; export shipments typically begin in this window."
+      }
+    ]
+  }
+}

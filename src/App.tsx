@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
-import MangoVarieties from "@/components/MangoVarieties"
+import ProductCatalog from "@/components/ProductCatalog"
 import OrchardExport from "@/components/OrchardExport"
 import QualityAssurance from "@/components/QualityAssurance"
 import PerfectRipeness from "@/components/PerfectRipeness"
@@ -12,22 +12,26 @@ import QuoteModal from "@/components/QuoteModal"
 
 function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false)
+  const [targetProduct, setTargetProduct] = useState<string | undefined>(undefined)
 
-  const handleOpenQuote = () => setIsQuoteOpen(true)
+  const handleOpenQuote = (productName?: string) => {
+    setTargetProduct(productName)
+    setIsQuoteOpen(true)
+  }
   const handleCloseQuote = () => setIsQuoteOpen(false)
 
   return (
     <div className="bg-background min-h-screen text-on-background selection:bg-primary-container selection:text-on-primary-container">
       {/* Navigation header */}
-      <Navbar onOpenQuote={handleOpenQuote} />
+      <Navbar onOpenQuote={() => handleOpenQuote()} />
 
       {/* Main body wrapper */}
       <main className="pt-24 md:pt-32">
         {/* Hero Section */}
-        <Hero onOpenQuote={handleOpenQuote} />
+        <Hero onOpenQuote={() => handleOpenQuote()} />
 
-        {/* Mango Varieties Showcase */}
-        <MangoVarieties />
+        {/* Full Produce Catalog (Mangoes, Fruits, Dry Fruits, Vegetables) */}
+        <ProductCatalog onOpenQuote={handleOpenQuote} />
 
         {/* Orchard to Export Process */}
         <OrchardExport />
@@ -48,8 +52,8 @@ function App() {
       {/* Organic Curved Footer */}
       <Footer />
 
-      {/* Interactive Quote Modal overlay */}
-      <QuoteModal isOpen={isQuoteOpen} onClose={handleCloseQuote} />
+      {/* Interactive B2B Quote Modal overlay */}
+      <QuoteModal isOpen={isQuoteOpen} onClose={handleCloseQuote} initialProduct={targetProduct} />
     </div>
   )
 }

@@ -21,7 +21,7 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
 
   const navLinks = [
     { name: "Home", href: "#" },
-    { name: "Mango Varieties", href: "#varieties" },
+    { name: "Product Catalog", href: "#catalog" },
     { name: "Certifications", href: "#certifications" },
     { name: "Blog", href: "#blog" },
     { name: "About", href: "#about" },

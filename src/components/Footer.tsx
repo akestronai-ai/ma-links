@@ -22,7 +22,7 @@ export default function Footer() {
             MA Links
           </span>
           <p className="font-sans text-sm text-white/80 leading-relaxed">
-            Connecting Multan's finest orchards to the global market. Delivering premium, handpicked mangoes with unmatched freshness and quality.
+            Connecting Pakistan's finest agricultural regions to the global market. Exporting premium mangoes, fresh fruits, dry fruits, and vegetables with year-round reliability.
           </p>
           <div className="flex gap-4 mt-2">
             <a
@@ -52,8 +52,8 @@ export default function Footer() {
             <a className="text-sm text-white/70 hover:text-white hover:underline decoration-tertiary-container decoration-2 underline-offset-4 transition-all" href="#">
               Home
             </a>
-            <a className="text-sm text-white/70 hover:text-white hover:underline decoration-tertiary-container decoration-2 underline-offset-4 transition-all" href="#varieties">
-              Mango Varieties
+            <a className="text-sm text-white/70 hover:text-white hover:underline decoration-tertiary-container decoration-2 underline-offset-4 transition-all" href="#catalog">
+              Product Catalog
             </a>
             <a className="text-sm text-white/70 hover:text-white hover:underline decoration-tertiary-container decoration-2 underline-offset-4 transition-all" href="#certifications">
               Certifications
@@ -90,7 +90,7 @@ export default function Footer() {
 
       {/* Footer Bottom Bar */}
       <div className="border-t border-white/10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10 text-xs text-white/50">
-        <p>© 2026 MA Links. Premium Mango Exports. All Rights Reserved.</p>
+        <p>© 2026 MA Links. Premium Produce Exports. All Rights Reserved.</p>
         <p className="hover:text-white transition-colors cursor-pointer">Terms & Privacy Policy</p>
       </div>
 

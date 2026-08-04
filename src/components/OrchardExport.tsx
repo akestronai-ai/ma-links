@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ShieldCheck, Thermometer, Box, Truck, Check } from "lucide-react"
+import { ShieldCheck, Thermometer, Box, Truck, Check, Globe } from "lucide-react"
 import orchardExportImg from "@/assets/images/orchard_export.png"
 
 export default function OrchardExport() {
@@ -7,73 +7,77 @@ export default function OrchardExport() {
 
   const steps = [
     {
-      title: "Quality Sorting",
-      desc: "Strict manual and sensory inspection where mangoes are sorted by size, color, aroma, and skin texture.",
+      title: "Optical & Caliber Sorting",
+      desc: "Produce is mechanically and manually sorted by caliber size, Brix sugar content, skin finish, and fruit weight.",
       icon: <ShieldCheck className="w-5 h-5" />,
+      b2bSpecs: "Grade A Export Calibers: Mangoes (4kg/5kg), Kinnow (10kg/13kg/14kg), Onions (45-70mm+), Walnuts (30mm+)."
     },
     {
-      title: "Phytosanitary Wash",
-      desc: "Cleansing using hot water treatment (HWT) to ensure complete compliance with EU, UK, and US regulations.",
+      title: "Phytosanitary & VHT Wash",
+      desc: "Mandatory Vapour Heat Treatment (VHT) and Hot Water Dip Treatment (HWDT) enforced under Department of Plant Protection (DPP) supervision.",
       icon: <Thermometer className="w-5 h-5" />,
+      b2bSpecs: "100% compliant with EU, UK, Middle East, and US Department of Agriculture (USDA) plant health regulations."
     },
     {
-      title: "Padded Packaging",
-      desc: "Individually wrapped in foam socks and carefully placed in heavy-duty ventilated export crates.",
+      title: "Export Packaging & Palletization",
+      desc: "Vented double-walled corrugated cartons with protective foam netting, shrink-wrapped on treated wooden ISPM-15 export pallets.",
       icon: <Box className="w-5 h-5" />,
+      b2bSpecs: "Master carton payloads: 3.5kg, 4kg, 5kg, 10kg, 13kg, 14kg, 25kg mesh bags, and vacuum pouches."
     },
     {
-      title: "Cold Chain Transport",
-      desc: "Immediate pre-cooling followed by temperature-controlled air or sea cargo shipping to global networks.",
+      title: "Reefer Cold Chain & Dispatch",
+      desc: "Immediate forced-air pre-cooling to +2°C to +12°C (produce specific) with continuous digital temperature loggers.",
       icon: <Truck className="w-5 h-5" />,
+      b2bSpecs: "Lead Times: Air Freight (3–5 days door-to-airport), Sea Cargo FCL Reefer 20ft/40ft (10–21 days port-to-port)."
     },
   ]
 
   return (
-    <section id="certifications" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 scroll-mt-24">
+    <section id="b2b-logistics" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 scroll-mt-24">
       <div className="text-center mb-12">
         <h2 className="font-display font-bold text-3xl md:text-4xl text-on-surface inline-block relative">
-          From Orchard to Export
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-primary rounded-full"></div>
+          Export Supply Chain & Cold Chain Logistics
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-28 h-1 bg-primary rounded-full"></div>
         </h2>
         <p className="mt-8 font-sans text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-          Our mangoes begin their journey in the lush, sun-drenched orchards of Multan, meticulously cared for by generations of expert farmers before being prepared for the global stage.
+          From Punjab orchards to global ports—combining strict phytosanitary compliance, cold chain integrity, and flexible Incoterms.
         </p>
       </div>
 
       {/* Main Image Banner */}
-      <div className="rounded-[2rem] overflow-hidden box-shadow-organic-md relative w-full aspect-[16/9] md:aspect-[21/9] group mb-12">
+      <div className="rounded-[2rem] overflow-hidden box-shadow-organic-md relative w-full aspect-[16/9] md:aspect-[21/9] group mb-12 border border-outline-variant/10">
         <img
-          alt="From Orchard to Export Timeline"
+          alt="Traceable Farm-to-Port Export Logistics"
           className="w-full h-full object-cover transform scale-101 hover:scale-103 duration-[1.5s] ease-out"
           src={orchardExportImg}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent pointer-events-none" />
-        <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white max-w-lg z-10 flex flex-col gap-2">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-primary-fixed-dim bg-primary/20 backdrop-blur-md px-3 py-1 rounded-full w-max">
-            Process Timeline
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent pointer-events-none" />
+        <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white max-w-xl z-10 flex flex-col gap-2">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-primary-fixed-dim bg-primary/30 backdrop-blur-md px-3 py-1 rounded-full w-max border border-white/20">
+            FOB Karachi • CIF Destination • CFR
           </span>
-          <h3 className="text-2xl md:text-3xl font-display font-bold">Traceable Farm-to-Fork Logistics</h3>
+          <h3 className="text-2xl md:text-3xl font-display font-bold">Traceable Farm-to-Port Cold Chain</h3>
           <p className="text-sm text-white/80 hidden sm:block">
-            We preserve original freshness and taste from the branch to the terminal, maintaining a cold chain cycle throughout the process.
+            Preserving Brix sweetness, firm texture, and shelf life from Multan packinghouses to international destination ports.
           </p>
         </div>
       </div>
 
-      {/* Interactive Timeline Widget */}
+      {/* Interactive B2B Logistics Widget */}
       <div className="bg-surface-container-low/50 border border-outline-variant/20 rounded-[2rem] p-6 md:p-10 box-shadow-organic-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Timeline steps */}
           <div className="lg:col-span-5 flex flex-col gap-4">
-            <h4 className="font-display font-bold text-xl text-on-surface mb-2">Our Step-by-Step Export Cycle</h4>
+            <h4 className="font-display font-bold text-xl text-on-surface mb-2">Our 4-Stage Export Protocol</h4>
             <div className="flex flex-col gap-3">
               {steps.map((step, idx) => (
                 <button
                   key={step.title}
                   onClick={() => setActiveStep(idx)}
-                  className={`flex items-center gap-4 text-left p-3.5 rounded-2xl transition-all duration-300 border ${
+                  className={`flex items-center gap-4 text-left p-3.5 rounded-2xl transition-all duration-300 border cursor-pointer ${
                     activeStep === idx
-                      ? "bg-background border-primary/20 box-shadow-organic-sm translate-x-2"
+                      ? "bg-background border-primary/30 box-shadow-organic-sm translate-x-2"
                       : "bg-transparent border-transparent hover:bg-surface-container-low"
                   }`}
                 >
@@ -96,20 +100,31 @@ export default function OrchardExport() {
           </div>
 
           {/* Step Detail Display Card */}
-          <div className="lg:col-span-7 bg-background border border-outline-variant/10 rounded-[1.5rem] p-4 md:p-8 box-shadow-organic-sm relative min-h-[220px] flex flex-col justify-center animate-in fade-in duration-300">
-            <div className="absolute top-6 right-6 text-primary-fixed-dim/40 text-7xl font-display font-extrabold select-none">
+          <div className="lg:col-span-7 bg-background border border-outline-variant/15 rounded-[1.5rem] p-6 md:p-8 box-shadow-organic-sm relative min-h-[240px] flex flex-col justify-center animate-in fade-in duration-300">
+            <div className="absolute top-6 right-6 text-primary-fixed-dim/30 text-7xl font-display font-extrabold select-none">
               0{activeStep + 1}
             </div>
             
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-inner">
+              <div className="w-12 h-12 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-inner">
                 {steps[activeStep].icon}
               </div>
-              <h4 className="font-display font-bold text-2xl text-on-surface">{steps[activeStep].title}</h4>
+              <div>
+                <span className="text-[10px] font-bold text-secondary uppercase tracking-wider">Export Standard Stage {activeStep + 1}</span>
+                <h4 className="font-display font-bold text-2xl text-on-surface">{steps[activeStep].title}</h4>
+              </div>
             </div>
-            <p className="font-sans text-base text-on-surface-variant leading-relaxed">
+
+            <p className="font-sans text-sm text-on-surface-variant leading-relaxed mb-4">
               {steps[activeStep].desc}
             </p>
+
+            <div className="bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/10 text-xs">
+              <span className="font-bold text-primary flex items-center gap-1.5 mb-1">
+                <Globe className="w-3.5 h-3.5" /> Commercial & Technical Specification:
+              </span>
+              <p className="text-on-surface font-medium">{steps[activeStep].b2bSpecs}</p>
+            </div>
           </div>
 
         </div>

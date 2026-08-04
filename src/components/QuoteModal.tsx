@@ -1,36 +1,46 @@
-import React, { useState } from "react"
-import { X, Check } from "lucide-react"
+import React, { useState, useEffect } from "react"
+import { X, Check, ShieldCheck } from "lucide-react"
 
 interface QuoteModalProps {
   isOpen: boolean
   onClose: () => void
+  initialProduct?: string
 }
 
-export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
+export default function QuoteModal({ isOpen, onClose, initialProduct }: QuoteModalProps) {
   const [formData, setFormData] = useState({
     name: "",
+    company: "",
     email: "",
     country: "",
-    variety: "Chaunsa",
+    incoterm: "FOB Karachi",
+    variety: "Chaunsa Mango",
     quantity: "",
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
 
+  useEffect(() => {
+    if (initialProduct) {
+      setFormData(prev => ({ ...prev, variety: initialProduct }))
+    }
+  }, [initialProduct])
+
   if (!isOpen) return null
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate API call
     setSubmitted(true)
     setTimeout(() => {
       setSubmitted(false)
       onClose()
       setFormData({
         name: "",
+        company: "",
         email: "",
         country: "",
-        variety: "Chaunsa",
+        incoterm: "FOB Karachi",
+        variety: "Chaunsa Mango",
         quantity: "",
         message: "",
       })
@@ -38,24 +48,24 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[130] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-on-background/40 backdrop-blur-sm transition-opacity duration-300"
+        className="absolute inset-0 bg-on-background/50 backdrop-blur-sm transition-opacity duration-300"
         onClick={onClose}
       />
       
       {/* Modal Container */}
       <div className="relative bg-background border border-outline-variant/30 rounded-3xl w-full max-w-lg p-6 md:p-8 box-shadow-organic-md z-10 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
-        {/* Mango organic background light accent */}
+        {/* Background light accents */}
         <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-primary-fixed-dim/20 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 w-48 h-48 rounded-full bg-secondary-fixed/20 blur-3xl pointer-events-none" />
 
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant hover:text-on-surface z-30"
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant hover:text-on-surface z-30 cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -65,103 +75,150 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             <div className="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mb-6">
               <Check className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-display font-bold text-on-surface mb-2">Quote Request Received!</h3>
-            <p className="text-on-surface-variant max-w-sm">
-              Thank you for choosing MA Links. Our export specialists will contact you at <strong>{formData.email}</strong> within 24 hours.
+            <h3 className="text-2xl font-display font-bold text-on-surface mb-2">Export RFQ Received!</h3>
+            <p className="text-on-surface-variant max-w-sm text-sm">
+              Thank you for choosing MA Links. Our wholesale export team will prepare an official commercial quotation & proforma invoice for <strong>{formData.email}</strong> within 24 hours.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-5">
+          <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-4">
             <div>
-              <h3 className="text-2xl font-display font-bold text-on-surface tracking-tight">Request an Export Quote</h3>
-              <p className="text-sm text-on-surface-variant mt-1">
-                Tell us about your global import requirements, and our team will prepare a custom proposal.
+              <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-secondary bg-secondary-container/40 px-2.5 py-0.5 rounded-full mb-1">
+                <ShieldCheck className="w-3 h-3" /> Official B2B Wholesale Request
+              </div>
+              <h3 className="text-2xl font-display font-bold text-on-surface tracking-tight">Request Commercial Quote</h3>
+              <p className="text-xs text-on-surface-variant mt-1">
+                Provide your import specifications to receive customized FOB/CIF pricing and phytosanitary lead times.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Full Name</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Full Name</label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="e.g. John Doe"
-                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
+                  placeholder="e.g. Procurement Mgr"
+                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
                 />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Business Email</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Company / Importer Name</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  placeholder="e.g. Global Foods Trading B.V."
+                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Business Email</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="name@company.com"
-                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
+                  placeholder="procurement@company.com"
+                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
                 />
               </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Destination Country</label>
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Destination Country / Port</label>
                 <input
                   type="text"
                   required
                   value={formData.country}
                   onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  placeholder="e.g. United Kingdom"
-                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
+                  placeholder="e.g. Rotterdam / London Gateway"
+                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
                 />
               </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Primary Variety</label>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Target Produce</label>
                 <select
                   value={formData.variety}
                   onChange={(e) => setFormData({ ...formData, variety: e.target.value })}
-                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface cursor-pointer"
+                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary transition-colors text-on-surface cursor-pointer"
                 >
-                  <option value="Chaunsa">Chaunsa (Sweet & Aromatic)</option>
-                  <option value="Sindhri">Sindhri (Large & Honey-Sweet)</option>
-                  <option value="Anwar Ratol">Anwar Ratol (Intense Flavor)</option>
-                  <option value="Langra">Langra (Fibreless & Tangy)</option>
-                  <option value="Dusehri">Dusehri (Rich & Juicy)</option>
-                  <option value="Saroli">Saroli (Early Season)</option>
+                  <optgroup label="Mango Varieties">
+                    <option value="Chaunsa Mango">Chaunsa Mango</option>
+                    <option value="Sindhri Mango">Sindhri Mango</option>
+                    <option value="Anwar Ratol Mango">Anwar Ratol Mango</option>
+                    <option value="Langra Mango">Langra Mango</option>
+                    <option value="Dusehri Mango">Dusehri Mango</option>
+                    <option value="Saroli Mango">Saroli Mango</option>
+                  </optgroup>
+                  <optgroup label="Fresh Fruits">
+                    <option value="Kinnow Citrus">Kinnow Citrus (Mandarin)</option>
+                    <option value="Winter Guava">Winter Guava</option>
+                    <option value="Ruby Red Pomegranate">Ruby Red Pomegranate</option>
+                    <option value="Fresh Dates">Fresh Dates (Rutab / Aseel)</option>
+                  </optgroup>
+                  <optgroup label="Dry Fruits & Nuts">
+                    <option value="Walnuts (Akhrot)">Walnuts (Akhrot)</option>
+                    <option value="Pine Nuts (Chilgoza)">Pine Nuts (Chilgoza)</option>
+                    <option value="Dried Figs (Anjeer)">Dried Figs (Anjeer)</option>
+                    <option value="Dried Dates (Chuhara)">Dried Dates (Chuhara)</option>
+                  </optgroup>
+                  <optgroup label="Fresh Vegetables">
+                    <option value="Export Onions">Export Onions (Red/Yellow)</option>
+                    <option value="Fresh Potatoes">Fresh Export Potatoes</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Incoterms Required</label>
+                <select
+                  value={formData.incoterm}
+                  onChange={(e) => setFormData({ ...formData, incoterm: e.target.value })}
+                  className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-primary transition-colors text-on-surface cursor-pointer"
+                >
+                  <option value="FOB Karachi">FOB Karachi (Port / Airport)</option>
+                  <option value="CIF Destination">CIF Destination Port</option>
+                  <option value="CFR Destination">CFR Destination Port</option>
                 </select>
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Est. Quantity (in crates)</label>
+            <div className="flex flex-col gap-1">
+              <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Target Volume / Payload</label>
               <input
-                type="number"
+                type="text"
                 required
-                min="10"
                 value={formData.quantity}
                 onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                placeholder="Minimum 10 crates for exports"
-                className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
+                placeholder="e.g. 1 FCL 40ft Reefer Container or 2 Pallets Air Freight"
+                className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3.5 py-2 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface"
               />
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Custom Requirements</label>
+            <div className="flex flex-col gap-1">
+              <label className="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Packaging & Quarantine Requirements</label>
               <textarea
-                rows={3}
+                rows={2}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Mention packaging size, phytosanitary requirements, or delivery schedule specs..."
-                className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors text-on-surface resize-none"
+                placeholder="Specify carton sizing (3.5kg / 4kg / 10kg), VHT dip requirement, or temperature logging specs..."
+                className="bg-surface-container-low border border-outline-variant/30 rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-primary transition-colors text-on-surface resize-none"
               />
             </div>
 
             <button
               type="submit"
-              className="bg-primary-container text-on-primary-container font-semibold px-6 py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-md hover:shadow-lg border-b-2 border-[#e6a100] active:scale-98 text-center mt-2 cursor-pointer"
+              className="bg-primary-container text-on-primary-container font-semibold px-6 py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-md border-b-2 border-[#e6a100] active:scale-98 text-center text-sm cursor-pointer mt-1"
             >
-              Submit Proposal Request
+              Submit Commercial RFQ
             </button>
           </form>
         )}
