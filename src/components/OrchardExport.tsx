@@ -33,7 +33,7 @@ export default function OrchardExport() {
   ]
 
   return (
-    <section id="b2b-logistics" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24 scroll-mt-24">
+    <section id="b2b-logistics" className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 scroll-mt-24">
       <div className="text-center mb-12">
         <h2 className="font-display font-bold text-3xl md:text-4xl text-on-surface inline-block relative">
           Export Supply Chain & Cold Chain Logistics

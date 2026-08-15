@@ -29,7 +29,7 @@ export default function MangoNutrition() {
   ]
 
   return (
-    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 mb-4 md:mb-8">
+    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 mb-2">
       <div className="text-center mb-12">
         <h2 className="font-display font-bold text-3xl md:text-4xl text-on-surface inline-block relative">
           Nutritional Excellence Across All Produce

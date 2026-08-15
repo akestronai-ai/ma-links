@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { X, Check, ShieldCheck } from "lucide-react"
+import { X, Check, ShieldCheck, Loader2, AlertCircle } from "lucide-react"
+import { sendQuoteFormEmails } from "../lib/emailService"
 
 interface QuoteModalProps {
   isOpen: boolean
@@ -19,6 +20,8 @@ export default function QuoteModal({ isOpen, onClose, initialProduct }: QuoteMod
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
     if (initialProduct) {
@@ -28,23 +31,48 @@ export default function QuoteModal({ isOpen, onClose, initialProduct }: QuoteMod
 
   if (!isOpen) return null
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      onClose()
-      setFormData({
-        name: "",
-        company: "",
-        email: "",
-        country: "",
-        incoterm: "FOB Karachi",
-        variety: "Chaunsa Mango",
-        quantity: "",
-        message: "",
+    setIsSubmitting(true)
+    setErrorMessage(null)
+
+    try {
+      const result = await sendQuoteFormEmails({
+        name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        country: formData.country,
+        incoterm: formData.incoterm,
+        variety: formData.variety,
+        quantity: formData.quantity,
+        message: formData.message,
       })
-    }, 2500)
+
+      if (result && !result.success && result.message) {
+        console.warn("[QuoteModal] Email notice:", result.message)
+      }
+
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        onClose()
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          country: "",
+          incoterm: "FOB Karachi",
+          variety: "Chaunsa Mango",
+          quantity: "",
+          message: "",
+        })
+      }, 3500)
+    } catch (err) {
+      console.error("[QuoteModal] Submit error:", err)
+      setErrorMessage("Could not send quote request. Please try again or WhatsApp our trade desk.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -214,11 +242,39 @@ export default function QuoteModal({ isOpen, onClose, initialProduct }: QuoteMod
               />
             </div>
 
+            {errorMessage && (
+              <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-start gap-2 text-red-700 text-xs animate-in fade-in">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold">{errorMessage}</p>
+                  <p className="mt-0.5 text-[11px]">
+                    Direct WhatsApp:{" "}
+                    <a 
+                      href="https://wa.me/923027176692" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="underline font-bold"
+                    >
+                      +92 302 7176692
+                    </a>
+                  </p>
+                </div>
+              </div>
+            )}
+
             <button
               type="submit"
-              className="bg-primary-container text-on-primary-container font-semibold px-6 py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-md border-b-2 border-[#e6a100] active:scale-98 text-center text-sm cursor-pointer mt-1"
+              disabled={isSubmitting}
+              className="bg-primary-container text-on-primary-container font-semibold px-6 py-3 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-md border-b-2 border-[#e6a100] active:scale-98 text-center text-sm cursor-pointer mt-1 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Submit Commercial RFQ
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Transmitting Quote Request...</span>
+                </>
+              ) : (
+                <span>Submit Commercial RFQ</span>
+              )}
             </button>
           </form>
         )}

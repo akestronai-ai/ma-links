@@ -1,61 +1,49 @@
-import { useState } from "react"
+import { useEffect } from "react"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import Navbar from "@/components/Navbar"
-import Hero from "@/components/Hero"
-import ProductCatalog from "@/components/ProductCatalog"
-import OrchardExport from "@/components/OrchardExport"
-import QualityAssurance from "@/components/QualityAssurance"
-import PerfectRipeness from "@/components/PerfectRipeness"
-import GlobalReach from "@/components/GlobalReach"
-import MangoNutrition from "@/components/MangoNutrition"
 import Footer from "@/components/Footer"
-import QuoteModal from "@/components/QuoteModal"
 
-function App() {
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false)
-  const [targetProduct, setTargetProduct] = useState<string | undefined>(undefined)
+import HomePage from "@/pages/HomePage"
+import CatalogPage from "@/pages/CatalogPage"
+import ContactPage from "@/pages/ContactPage"
+import QuotePage from "@/pages/QuotePage"
+import CertificationsPage from "@/pages/CertificationsPage"
 
-  const handleOpenQuote = (productName?: string) => {
-    setTargetProduct(productName)
-    setIsQuoteOpen(true)
-  }
-  const handleCloseQuote = () => setIsQuoteOpen(false)
+// Scroll to top helper on navigation
+function ScrollToTop() {
+  const { pathname } = useLocation()
 
-  return (
-    <div className="bg-background min-h-screen text-on-background selection:bg-primary-container selection:text-on-primary-container">
-      {/* Navigation header */}
-      <Navbar onOpenQuote={() => handleOpenQuote()} />
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
-      {/* Main body wrapper */}
-      <main className="pt-24 md:pt-32">
-        {/* Hero Section */}
-        <Hero onOpenQuote={() => handleOpenQuote()} />
-
-        {/* Full Produce Catalog (Mangoes, Fruits, Dry Fruits, Vegetables) */}
-        <ProductCatalog onOpenQuote={handleOpenQuote} />
-
-        {/* Orchard to Export Process */}
-        <OrchardExport />
-
-        {/* Quality Control & Assurance */}
-        <QualityAssurance />
-
-        {/* Perfect Ripeness details */}
-        <PerfectRipeness />
-
-        {/* Global Logistics Route */}
-        <GlobalReach />
-
-        {/* Health & Nutrition benefits */}
-        <MangoNutrition />
-      </main>
-
-      {/* Organic Curved Footer */}
-      <Footer />
-
-      {/* Interactive B2B Quote Modal overlay */}
-      <QuoteModal isOpen={isQuoteOpen} onClose={handleCloseQuote} initialProduct={targetProduct} />
-    </div>
-  )
+  return null
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="bg-background min-h-screen text-on-background selection:bg-primary-container selection:text-on-primary-container flex flex-col justify-between">
+        
+        {/* Navigation header with Get in Touch CTA */}
+        <Navbar />
+
+        {/* Main Body Routing Area with reduced top padding to eliminate gaps */}
+        <main className="pt-18 md:pt-20 flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/quote" element={<QuotePage />} />
+            <Route path="/certifications" element={<CertificationsPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </main>
+
+        {/* Global Footer */}
+        <Footer />
+      </div>
+    </BrowserRouter>
+  )
+}

@@ -1,31 +1,27 @@
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { Link, useLocation } from "react-router-dom"
+import { Menu, X, PhoneCall, FileText } from "lucide-react"
 import logo from "@/assets/images/logo.png"
 
-interface NavbarProps {
-  onOpenQuote: () => void
-}
-
-export default function Navbar({ onOpenQuote }: NavbarProps) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setIsScrolled(window.scrollY > 15)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "Product Catalog", href: "#catalog" },
-    { name: "Certifications", href: "#certifications" },
-    { name: "Blog", href: "#blog" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Produce Catalog", href: "/catalog" },
+    { name: "Certifications", href: "/certifications" },
+    { name: "Request Quote", href: "/quote" },
+    { name: "Contact Us", href: "/contact" },
   ]
 
   return (
@@ -33,54 +29,73 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-md py-3"
-            : "bg-background/90 backdrop-blur-sm py-5"
+            ? "bg-background/95 backdrop-blur-md shadow-md py-2.5"
+            : "bg-background/90 backdrop-blur-sm py-3.5"
         }`}
       >
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2.5 group">
             <img
               alt="MA Links Logo"
               className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               src={logo}
             />
-            <span className="text-xl md:text-2xl font-display font-bold text-primary tracking-tight">
-              MA Links
-            </span>
-          </a>
+            <div className="flex flex-col">
+              <span className="text-xl md:text-2xl font-display font-bold text-primary tracking-tight leading-none">
+                MA Links
+              </span>
+              <span className="text-[10px] text-secondary font-bold tracking-widest uppercase">
+                Global Produce Exporter
+              </span>
+            </div>
+          </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex gap-8 items-center font-sans font-semibold text-sm">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low/50 px-3 py-1.5 rounded-lg active:scale-95 duration-150 ease-in-out"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="hidden md:flex gap-1 lg:gap-2 items-center font-sans font-semibold text-sm">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`px-3.5 py-1.5 rounded-full transition-all duration-200 ${
+                    isActive
+                      ? "bg-primary-container text-on-primary-container font-bold shadow-xs"
+                      : "text-on-surface-variant hover:text-primary hover:bg-surface-container-low"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
+            })}
           </div>
 
-          {/* Actions */}
-          <div className="flex items-center gap-2 md:gap-4">
-            
-
-
-            {/* Quote CTA Button */}
-            <button
-              onClick={onOpenQuote}
-              className="bg-primary-container text-on-primary-container font-sans font-semibold text-xs md:text-sm px-4 py-2 md:px-6 md:py-2.5 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 box-shadow-organic-sm hover:box-shadow-organic-md border-b-2 border-[#e6a100] active:scale-95 whitespace-nowrap cursor-pointer"
+          {/* Right Actions */}
+          <div className="flex items-center gap-2.5">
+            {/* Quick Quote Pill */}
+            <Link
+              to="/quote"
+              className="hidden xl:inline-flex items-center gap-1.5 text-xs font-bold text-secondary bg-secondary-container/40 hover:bg-secondary-container/80 px-3.5 py-2 rounded-full transition-colors border border-secondary/20"
             >
-              Get a Quote
-            </button>
+              <FileText className="w-3.5 h-3.5 text-secondary" />
+              <span>Commercial RFQ</span>
+            </Link>
+
+            {/* Top Right "Get in Touch" Primary Button */}
+            <Link
+              to="/contact"
+              className="bg-primary-container text-on-primary-container font-sans font-semibold text-xs md:text-sm px-4 py-2 md:px-5 md:py-2.5 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300 box-shadow-organic-sm hover:box-shadow-organic-md border-b-2 border-[#e6a100] active:scale-95 whitespace-nowrap cursor-pointer flex items-center gap-2"
+            >
+              <PhoneCall className="w-3.5 h-3.5" />
+              <span>Get in Touch</span>
+            </Link>
 
             {/* Mobile Hamburger Icon */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-on-surface-variant hover:text-primary transition-colors"
+              className="md:hidden p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               aria-label="Toggle Mobile Menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -91,17 +106,24 @@ export default function Navbar({ onOpenQuote }: NavbarProps) {
 
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background border-b border-outline-variant/20 py-4 px-margin-mobile flex flex-col gap-3 font-sans font-semibold text-sm animate-in slide-in-from-top duration-250 absolute w-full left-0 z-40 shadow-lg">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-on-surface-variant hover:text-primary transition-colors py-2 px-3 hover:bg-surface-container-low rounded-xl"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="md:hidden bg-background border-b border-outline-variant/20 py-4 px-margin-mobile flex flex-col gap-2 font-sans font-semibold text-sm animate-in slide-in-from-top duration-250 absolute w-full left-0 z-40 shadow-lg">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`py-2.5 px-4 rounded-xl transition-colors ${
+                    isActive
+                      ? "bg-primary-container text-on-primary-container font-bold"
+                      : "text-on-surface-variant hover:text-primary hover:bg-surface-container-low"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
+            })}
           </div>
         )}
       </nav>

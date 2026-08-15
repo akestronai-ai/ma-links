@@ -72,7 +72,7 @@ export default function GlobalReach() {
   }
 
   return (
-    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         {/* Info & Stats Column */}

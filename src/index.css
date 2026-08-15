@@ -38,8 +38,10 @@
   
   --font-sans: "Work Sans", system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-handwriting: "Caveat", cursive;
   
-  --spacing-section-gap: 120px;
+  --spacing-section-gap: 48px;
   --spacing-margin-desktop: 64px;
   --spacing-margin-mobile: 20px;
   --spacing-gutter: 24px;
