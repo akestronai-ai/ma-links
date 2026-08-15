@@ -7,27 +7,31 @@ export interface EmailPayload {
   data: Record<string, any>;
 }
 
-// Read .env
+// Read .env or process.env
 function getEnvConfig() {
   const envPath = path.resolve(process.cwd(), '.env');
-  const env: Record<string, string> = {};
+  const fileEnv: Record<string, string> = {};
   if (fs.existsSync(envPath)) {
-    const lines = fs.readFileSync(envPath, 'utf-8').split('\n');
-    for (const line of lines) {
-      const trimmed = line.trim();
-      if (trimmed && !trimmed.startsWith('#')) {
-        const [k, ...v] = trimmed.split('=');
-        if (k && v) env[k.trim()] = v.join('=').trim();
+    try {
+      const lines = fs.readFileSync(envPath, 'utf-8').split('\n');
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed && !trimmed.startsWith('#')) {
+          const [k, ...v] = trimmed.split('=');
+          if (k && v) fileEnv[k.trim()] = v.join('=').trim();
+        }
       }
+    } catch {
+      // Ignore if .env is missing or unreadable in production
     }
   }
   return {
-    host: env.SMTP_SERVER || 'smtp.gmail.com',
-    port: parseInt(env.SMTP_PORT || '465', 10),
-    secure: env.SMTP_SECURE === 'true' || true,
-    user: env.SMTP_USERNAME || 'malinks016@gmail.com',
-    pass: env.SMTP_PASSWORD || 'adetarrvtgbocamk',
-    from: env.SMTP_SENDER || 'malinks016@gmail.com',
+    host: process.env.SMTP_SERVER || fileEnv.SMTP_SERVER || 'smtp.gmail.com',
+    port: parseInt(process.env.SMTP_PORT || fileEnv.SMTP_PORT || '465', 10),
+    secure: (process.env.SMTP_SECURE || fileEnv.SMTP_SECURE) !== 'false',
+    user: process.env.SMTP_USERNAME || fileEnv.SMTP_USERNAME || 'malinks016@gmail.com',
+    pass: process.env.SMTP_PASSWORD || fileEnv.SMTP_PASSWORD || 'adetarrvtgbocamk',
+    from: process.env.SMTP_SENDER || fileEnv.SMTP_SENDER || 'malinks016@gmail.com',
     adminEmails: ['upwork491279@gmail.com', 'msaneefarooq34@gmail.com'],
   };
 }
